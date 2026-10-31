@@ -1,0 +1,1120 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>句義辨析全能題庫自學錦囊</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Vue 3 CDN -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <!-- Google Fonts: Noto Sans TC -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background-color: #f1f5f9;
+        }
+        /* 做減法：劃掉不重要細節的動態視覺 */
+        .strike-through-active {
+            text-decoration: line-through;
+            text-decoration-color: #ef4444;
+            text-decoration-thickness: 3.5px;
+            color: #94a3b8 !important;
+            background-color: #fee2e2 !important;
+            border-color: #fca5a5 !important;
+            transform: scale(0.98);
+        }
+        /* 亮起主角 1 標籤 */
+        .hero-1-active {
+            background-color: #fef08a !important;
+            border-color: #eab308 !important;
+            color: #854d0e !important;
+            font-weight: 800;
+            box-shadow: 0 4px 6px -1px rgba(234, 179, 8, 0.3);
+        }
+        /* 亮起主角 2 / 訊號詞標籤 */
+        .hero-2-active {
+            background-color: #fed7aa !important;
+            border-color: #f97316 !important;
+            color: #9a3412 !important;
+            font-weight: 800;
+            box-shadow: 0 4px 6px -1px rgba(249, 115, 22, 0.3);
+        }
+    </style>
+</head>
+<body class="text-slate-800 pb-20">
+    <div id="app" class="max-w-4xl mx-auto px-4 sm:px-6">
+        
+        <!-- 頂部頁首 HEADER -->
+        <header class="py-6 my-4 bg-gradient-to-r from-indigo-800 via-purple-700 to-pink-600 rounded-3xl shadow-xl text-white px-6 sm:px-8 text-center relative overflow-hidden">
+            <div class="absolute -right-10 -top-10 w-40 h-40 bg-white/10 rounded-full blur-2xl pointer-events-none"></div>
+            <span class="inline-block bg-white/20 backdrop-blur-md text-yellow-300 text-xs sm:text-sm font-bold px-4 py-1 rounded-full mb-2 border border-white/20">
+                🎯 小學生中文科自學神器 · 5步解題 SOP
+            </span>
+            <h1 class="text-2xl sm:text-4xl font-black tracking-wide mb-2">
+                📚 句義辨析自學錦囊
+            </h1>
+            <p class="text-indigo-100 text-xs sm:text-base max-w-xl mx-auto font-medium">
+                「做減法劃細節 ➔ 圈主角看訊號 ➔ 翻譯口語主幹 ➔ 破陷阱定答案」
+            </p>
+
+            <!-- 三階段清晰導航 Tab Bar -->
+            <nav class="flex justify-center gap-2 sm:gap-3 mt-6">
+                <button @click="stage = 1" 
+                        :class="stage === 1 ? 'bg-white text-indigo-900 font-black shadow-lg scale-105' : 'bg-indigo-900/60 text-indigo-100 hover:bg-indigo-800'"
+                        class="px-4 py-2.5 rounded-2xl text-xs sm:text-sm transition-all duration-200 flex items-center gap-1.5 border border-white/20">
+                    <span>1️⃣ 【重溫 SOP】</span>
+                </button>
+
+                <button @click="stage = 2" 
+                        :class="stage === 2 ? 'bg-white text-indigo-900 font-black shadow-lg scale-105' : 'bg-indigo-900/60 text-indigo-100 hover:bg-indigo-800'"
+                        class="px-4 py-2.5 rounded-2xl text-xs sm:text-sm transition-all duration-200 flex items-center gap-1.5 border border-white/20">
+                    <span>2️⃣ 【SOP 闖關練習】</span>
+                    <span class="bg-yellow-400 text-indigo-950 text-[10px] font-black px-2 py-0.5 rounded-full">6題實戰</span>
+                </button>
+
+                <button @click="stage = 3" 
+                        :class="stage === 3 ? 'bg-white text-indigo-900 font-black shadow-lg scale-105' : 'bg-indigo-900/60 text-indigo-100 hover:bg-indigo-800'"
+                        class="px-4 py-2.5 rounded-2xl text-xs sm:text-sm transition-all duration-200 flex items-center gap-1.5 border border-white/20">
+                    <span>3️⃣ 【避坑錦囊】</span>
+                </button>
+            </nav>
+        </header>
+
+        <!-- ================= 階段一：重溫 SOP (STAGE 1) ================= -->
+        <main v-if="stage === 1" class="space-y-6">
+            <div class="bg-amber-50 border-2 border-amber-300 p-5 rounded-3xl text-amber-950 shadow-sm flex items-start gap-3">
+                <span class="text-3xl shrink-0">💡</span>
+                <div>
+                    <h2 class="font-black text-base sm:text-lg text-amber-900 mb-1">給同學的溫馨提示：</h2>
+                    <p class="text-xs sm:text-sm leading-relaxed font-medium">
+                        作答「句義辨析」時，句子往往很長，裡面藏著許多干擾你的細節！請按照下面這套 <strong>5 步 SOP</strong>，就像玩偵探遊戲一樣，把不重要的東西刪掉，找出句子最核心的意思！
+                    </p>
+                </div>
+            </div>
+
+            <!-- 5步 SOP 圖解卡片 -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5">
+                <!-- Step 1 -->
+                <div class="bg-white p-5 rounded-3xl border-2 border-rose-100 shadow-sm space-y-2">
+                    <div class="flex items-center gap-3">
+                        <span class="w-9 h-9 bg-rose-600 text-white font-black rounded-xl flex items-center justify-center text-base shadow">1</span>
+                        <h3 class="font-black text-slate-800 text-base sm:text-lg">第一步：做減法（劃細節與舉例）</h3>
+                    </div>
+                    <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                        拿筆劃掉句中的<strong>背景介紹、具體例子（如食物名、活動名）、括號與補充細節</strong>。
+                    </p>
+                    <div class="bg-rose-50 text-rose-800 text-xs p-3 rounded-2xl font-bold border border-rose-200">
+                        口訣：看到例如、比如、像、具體例子，通通劃掉不看！
+                    </div>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="bg-white p-5 rounded-3xl border-2 border-amber-100 shadow-sm space-y-2">
+                    <div class="flex items-center gap-3">
+                        <span class="w-9 h-9 bg-amber-500 text-white font-black rounded-xl flex items-center justify-center text-base shadow">2</span>
+                        <h3 class="font-black text-slate-800 text-base sm:text-lg">第二步：圈主角與訊號詞</h3>
+                    </div>
+                    <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                        圈出<strong>核心主角（區分是「我」還是「所有人」）</strong>與關鍵訊號詞：<strong>轉折詞（但是）</strong>、<strong>因果詞（因為）</strong>。
+                    </p>
+                    <div class="bg-amber-50 text-amber-800 text-xs p-3 rounded-2xl font-bold border border-amber-200">
+                        口訣：主角是誰先圈好，轉折因果後面找！
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="bg-white p-5 rounded-3xl border-2 border-emerald-100 shadow-sm space-y-2">
+                    <div class="flex items-center gap-3">
+                        <span class="w-9 h-9 bg-emerald-600 text-white font-black rounded-xl flex items-center justify-center text-base shadow">3</span>
+                        <h3 class="font-black text-slate-800 text-base sm:text-lg">第三步：提主幹與大白話翻譯</h3>
+                    </div>
+                    <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                        回答「誰/什麼 + 怎麼樣/幹什麼」，將原文書面語換算成生活口語（如：「陪伴 ↔ 在一起」）。
+                    </p>
+                    <div class="bg-emerald-50 text-emerald-800 text-xs p-3 rounded-2xl font-bold border border-emerald-200">
+                        口訣：找不到原字別害怕，換成大白話就對了！
+                    </div>
+                </div>
+
+                <!-- Step 4 & 5 -->
+                <div class="bg-white p-5 rounded-3xl border-2 border-purple-100 shadow-sm space-y-2">
+                    <div class="flex items-center gap-3">
+                        <span class="w-9 h-9 bg-purple-600 text-white font-black rounded-xl flex items-center justify-center text-base shadow">4/5</span>
+                        <h3 class="font-black text-slate-800 text-base sm:text-lg">第四、五步：配角解碼與比選項</h3>
+                    </div>
+                    <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                        遇「自己感到渺小」啟動配角法則！運用「三不選」排除偷換主角、無中生有與文字照抄選項。
+                    </p>
+                    <div class="bg-purple-50 text-purple-800 text-xs p-3 rounded-2xl font-bold border border-purple-200">
+                        口訣：寫我渺小誇景大，寫我慚愧誇人優！
+                    </div>
+                </div>
+            </div>
+
+            <!-- 開始練習引導按鈕 -->
+            <div class="text-center pt-4">
+                <button @click="stage = 2" class="bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white font-black text-base sm:text-lg px-8 py-4 rounded-2xl shadow-xl transition-all transform hover:scale-105 active:scale-95 flex items-center gap-2 mx-auto">
+                    <span>✅ 我明白了，開始做 SOP 闖關練習！</span>
+                    <span class="text-xl">➔</span>
+                </button>
+            </div>
+        </main>
+
+        <!-- ================= 階段二：SOP 闖關練習 (STAGE 2) ================= -->
+        <main v-if="stage === 2" class="space-y-6">
+            
+            <!-- 題目選擇區 Question Selector Tab Bar -->
+            <div class="bg-white p-4 sm:p-5 rounded-3xl border border-indigo-100 shadow-sm space-y-3">
+                <div class="flex items-center justify-between flex-wrap gap-2">
+                    <label class="font-black text-slate-800 text-sm sm:text-base flex items-center gap-2">
+                        <span>📌 請選擇練習題目：</span>
+                        <span class="text-xs text-indigo-600 bg-indigo-50 px-2.5 py-0.5 rounded-full font-bold">精選 6 大關鍵題型</span>
+                    </label>
+                    <span class="text-xs font-bold text-slate-400">當前第 {{ currentQuestionIndex + 1 }} / {{ questions.length }} 題</span>
+                </div>
+
+                <div class="grid grid-cols-2 sm:grid-cols-3 gap-2">
+                    <button v-for="(q, idx) in questions" :key="q.id"
+                            @click="switchQuestion(idx)"
+                            :class="[
+                                currentQuestionIndex === idx 
+                                    ? 'bg-indigo-600 text-white font-black shadow-md border-indigo-600 scale-[1.02]' 
+                                    : 'bg-slate-50 hover:bg-slate-100 text-slate-700 border-slate-200',
+                                'p-2.5 rounded-2xl border text-left text-xs sm:text-sm transition-all flex flex-col justify-between'
+                            ]">
+                        <span class="text-[10px] opacity-80 font-bold block mb-0.5">{{ q.category }}</span>
+                        <span class="truncate font-bold">{{ q.title }}</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- 關卡步驟進度條 Step Progress Bar -->
+            <div class="bg-white p-3.5 rounded-2xl border border-slate-200 shadow-sm">
+                <div class="flex items-center justify-between gap-1 sm:gap-2 overflow-x-auto pb-1">
+                    <button @click="wizardStep = 1" 
+                            :class="wizardStep === 1 ? 'bg-rose-600 text-white font-bold shadow' : (currentQ.step1Completed ? 'bg-rose-100 text-rose-800 font-bold' : 'bg-slate-100 text-slate-400')"
+                            class="px-3 py-2 rounded-xl text-xs sm:text-sm whitespace-nowrap transition-all flex items-center gap-1">
+                        <span>1. 做減法(劃細節)</span>
+                        <span v-if="currentQ.step1Completed" class="text-xs">✓</span>
+                    </button>
+                    <span class="text-slate-300 text-xs">➔</span>
+                    <button @click="currentQ.step1Completed ? wizardStep = 2 : null" 
+                            :class="wizardStep === 2 ? 'bg-amber-500 text-white font-bold shadow' : (currentQ.step2Completed ? 'bg-amber-100 text-amber-800 font-bold' : 'bg-slate-100 text-slate-400')"
+                            :disabled="!currentQ.step1Completed"
+                            class="px-3 py-2 rounded-xl text-xs sm:text-sm whitespace-nowrap transition-all flex items-center gap-1">
+                        <span>2. 圈主角/訊號</span>
+                        <span v-if="currentQ.step2Completed" class="text-xs">✓</span>
+                    </button>
+                    <span class="text-slate-300 text-xs">➔</span>
+                    <button @click="currentQ.step2Completed ? wizardStep = 3 : null" 
+                            :class="wizardStep === 3 ? 'bg-emerald-600 text-white font-bold shadow' : (currentQ.step3Completed ? 'bg-emerald-100 text-emerald-800 font-bold' : 'bg-slate-100 text-slate-400')"
+                            :disabled="!currentQ.step2Completed"
+                            class="px-3 py-2 rounded-xl text-xs sm:text-sm whitespace-nowrap transition-all flex items-center gap-1">
+                        <span>3. 大白話翻譯</span>
+                        <span v-if="currentQ.step3Completed" class="text-xs">✓</span>
+                    </button>
+                    <span class="text-slate-300 text-xs">➔</span>
+                    <button @click="currentQ.step3Completed ? wizardStep = 4 : null" 
+                            :class="wizardStep === 4 ? 'bg-purple-600 text-white font-bold shadow' : 'bg-slate-100 text-slate-400'"
+                            :disabled="!currentQ.step3Completed"
+                            class="px-3 py-2 rounded-xl text-xs sm:text-sm whitespace-nowrap transition-all flex items-center gap-1">
+                        <span>4&5. 破陷阱比對</span>
+                        <span v-if="currentQ.step4Completed" class="text-xs">✓</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- 題目展示卡片 Question Card -->
+            <div class="bg-slate-900 text-white p-5 sm:p-6 rounded-3xl shadow-lg space-y-2 border border-slate-800">
+                <div class="flex items-center justify-between flex-wrap gap-2">
+                    <span class="bg-indigo-800 text-yellow-300 text-xs font-bold px-3 py-1 rounded-full border border-indigo-700">
+                        {{ currentQ.category }} · {{ currentQ.title }}
+                    </span>
+                    <span class="text-xs text-indigo-300 font-medium">請按照下方步驟動手練習</span>
+                </div>
+                <p class="text-base sm:text-xl font-medium tracking-wide leading-relaxed pt-2 text-indigo-50">
+                    「{{ currentQ.rawText }}」
+                </p>
+                <p class="text-xs sm:text-sm text-yellow-200 font-bold pt-1">
+                    ❓ 提問：{{ currentQ.questionStem }}
+                </p>
+            </div>
+
+            <!-- ================= STEP 1: 做減法（劃線） ================= -->
+            <div v-if="wizardStep === 1" class="bg-white p-5 sm:p-6 rounded-3xl border-2 border-rose-200 shadow-sm space-y-4">
+                <div class="flex items-center justify-between border-b pb-3 flex-wrap gap-2">
+                    <div class="flex items-center gap-2">
+                        <span class="w-8 h-8 bg-rose-600 text-white font-black rounded-xl flex items-center justify-center text-sm shadow">1</span>
+                        <h3 class="font-black text-slate-800 text-base sm:text-lg">【第一步：做減法】點擊劃掉不重要的細節！</h3>
+                    </div>
+                    <!-- 提示按鈕 -->
+                    <button @click="currentQ.showStep1HintBox = !currentQ.showStep1HintBox" 
+                            class="bg-amber-100 hover:bg-amber-200 text-amber-900 border border-amber-300 px-3 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1 shadow-sm">
+                        <span>💡 點我拿提示</span>
+                    </button>
+                </div>
+
+                <!-- 提示說明框 -->
+                <div v-if="currentQ.showStep1HintBox" class="p-3.5 bg-amber-50 border border-amber-300 rounded-2xl text-xs sm:text-sm text-amber-950 font-medium leading-relaxed animate-fade-in">
+                    🔍 <strong>給你的解題提示：</strong> {{ currentQ.step1Hint }}
+                </div>
+
+                <p class="text-xs sm:text-sm text-slate-600 leading-relaxed font-medium">
+                    👉 <strong>請直接點擊下方文字塊：</strong>把句中的引言背景、具體例子或補充細節劃掉！（被劃掉的字會變灰並加上紅色刪除線，再次點擊可復原）。
+                </p>
+
+                <!-- 文字切割點擊區塊 -->
+                <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 flex flex-wrap gap-2 text-base sm:text-lg font-medium leading-loose">
+                    <button v-for="(chunk, idx) in currentQ.step1Chunks" :key="idx"
+                            @click="toggleStep1Chunk(idx)"
+                            :class="[
+                                chunk.struck ? 'strike-through-active' : 'bg-white border-2 border-slate-200 hover:border-rose-400 text-slate-800 shadow-sm',
+                                'px-3 py-1.5 rounded-xl transition-all active:scale-95 text-left font-bold'
+                            ]">
+                        <span>{{ chunk.text }}</span>
+                        <span v-if="chunk.struck" class="text-xs text-rose-600 font-black ml-1">✖(已劃減)</span>
+                    </button>
+                </div>
+
+                <!-- 瘦身後的句子預覽 -->
+                <div class="p-4 bg-rose-50/70 rounded-2xl border border-rose-200 space-y-1">
+                    <span class="text-xs font-bold text-rose-700 block">✂️ 瘦身後剩餘的核心句子預覽：</span>
+                    <p class="text-sm sm:text-base font-black text-slate-800">
+                        {{ step1SlimSentence || '（你已經劃掉了所有文字，請復原核心主角喔！）' }}
+                    </p>
+                </div>
+
+                <!-- 反饋診斷與驗證按鈕 -->
+                <div class="space-y-3 pt-1">
+                    <div v-if="currentQ.step1Feedback" 
+                         :class="currentQ.step1IsCorrect ? 'bg-emerald-50 text-emerald-900 border-emerald-300' : 'bg-rose-50 text-rose-900 border-rose-300'" 
+                         class="p-4 rounded-2xl border-2 text-xs sm:text-sm font-bold shadow-sm leading-relaxed">
+                        {{ currentQ.step1Feedback }}
+                    </div>
+                    <button @click="verifyStep1" class="w-full bg-rose-600 hover:bg-rose-700 text-white font-black py-3.5 rounded-2xl shadow-lg transition-all text-sm sm:text-base">
+                        驗證第一步劃減成果 ➔
+                    </button>
+                </div>
+            </div>
+
+            <!-- ================= STEP 2: 圈主角與訊號詞 ================= -->
+            <div v-if="wizardStep === 2" class="bg-white p-5 sm:p-6 rounded-3xl border-2 border-amber-200 shadow-sm space-y-4">
+                <div class="flex items-center justify-between border-b pb-3 flex-wrap gap-2">
+                    <div class="flex items-center gap-2">
+                        <span class="w-8 h-8 bg-amber-500 text-white font-black rounded-xl flex items-center justify-center text-sm shadow">2</span>
+                        <h3 class="font-black text-slate-800 text-base sm:text-lg">【第二步：圈主角/訊號】鎖定核心靈魂詞！</h3>
+                    </div>
+                    <button @click="currentQ.showStep2HintBox = !currentQ.showStep2HintBox" 
+                            class="bg-amber-100 hover:bg-amber-200 text-amber-900 border border-amber-300 px-3 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1 shadow-sm">
+                        <span>💡 點我拿提示</span>
+                    </button>
+                </div>
+
+                <div v-if="currentQ.showStep2HintBox" class="p-3.5 bg-amber-50 border border-amber-300 rounded-2xl text-xs sm:text-sm text-amber-950 font-medium leading-relaxed">
+                    🔍 <strong>給你的解題提示：</strong> {{ currentQ.step2Hint }}
+                </div>
+
+                <p class="text-xs sm:text-sm text-slate-600 leading-relaxed font-medium">
+                    👉 <strong>請點擊選出靈魂詞彙：</strong>圈出句子的核心主角（注意區分「我」與「所有人」）或轉折/因果訊號詞（如：但是、因為）。
+                </p>
+
+                <!-- 點擊圈選區 -->
+                <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 flex flex-wrap gap-2 text-base sm:text-lg font-medium leading-loose">
+                    <button v-for="(item, idx) in currentQ.step2Words" :key="idx"
+                            @click="toggleStep2Word(idx)"
+                            :class="[
+                                item.selected ? (item.heroType === 1 ? 'hero-1-active' : 'hero-2-active') : 'bg-white border-2 border-slate-200 hover:border-amber-400 text-slate-800 shadow-sm',
+                                'px-3 py-1.5 rounded-xl transition-all active:scale-95 font-bold'
+                            ]">
+                        <span>{{ item.text }}</span>
+                        <span v-if="item.selected && item.heroType === 1" class="text-xs ml-1">⭐ {{ currentQ.step2Labels[0] }}</span>
+                        <span v-if="item.selected && item.heroType === 2" class="text-xs ml-1">🔹 {{ currentQ.step2Labels[1] }}</span>
+                    </button>
+                </div>
+
+                <!-- 驗證第二步 -->
+                <div class="space-y-3 pt-1">
+                    <div v-if="currentQ.step2Feedback" 
+                         :class="currentQ.step2IsCorrect ? 'bg-emerald-50 text-emerald-900 border-emerald-300' : 'bg-amber-50 text-amber-900 border-amber-300'" 
+                         class="p-4 rounded-2xl border-2 text-xs sm:text-sm font-bold shadow-sm leading-relaxed">
+                        {{ currentQ.step2Feedback }}
+                    </div>
+                    <button @click="verifyStep2" class="w-full bg-amber-500 hover:bg-amber-600 text-white font-black py-3.5 rounded-2xl shadow-lg transition-all text-sm sm:text-base">
+                        驗證第二步圈選成果 ➔
+                    </button>
+                </div>
+            </div>
+
+            <!-- ================= STEP 3: 大白話翻譯拼圖 ================= -->
+            <div v-if="wizardStep === 3" class="bg-white p-5 sm:p-6 rounded-3xl border-2 border-emerald-200 shadow-sm space-y-4">
+                <div class="flex items-center justify-between border-b pb-3 flex-wrap gap-2">
+                    <div class="flex items-center gap-2">
+                        <span class="w-8 h-8 bg-emerald-600 text-white font-black rounded-xl flex items-center justify-center text-sm shadow">3</span>
+                        <h3 class="font-black text-slate-800 text-base sm:text-lg">【第三步：提主幹】用大白話拼出核心意思！</h3>
+                    </div>
+                </div>
+
+                <p class="text-xs sm:text-sm text-slate-600 leading-relaxed font-medium">
+                    👉 <strong>大白話換算任務：</strong>題目選項往往不會用原文原字，請透過下拉選單，把剛才瘦身後的意思拼成一句通順的生活大白話！
+                </p>
+
+                <!-- 下拉選單組詞 -->
+                <div class="p-5 bg-emerald-50/70 rounded-2xl border-2 border-emerald-200 space-y-4">
+                    <div class="flex flex-wrap items-center gap-2 text-base sm:text-lg font-bold text-slate-800">
+                        <span>這句話的大白話核心意思是：</span>
+                        
+                        <!-- 選項 1 -->
+                        <select v-model="currentQ.step3Blank1" class="bg-white border-2 border-emerald-500 rounded-xl px-3 py-1.5 text-emerald-950 font-black focus:outline-none shadow-sm text-sm sm:text-base">
+                            <option value="" disabled>-- 選擇主體/對象 --</option>
+                            <option v-for="opt in currentQ.blank1Options" :key="opt" :value="opt">{{ opt }}</option>
+                        </select>
+
+                        <!-- 選項 2 -->
+                        <select v-model="currentQ.step3Blank2" class="bg-white border-2 border-emerald-500 rounded-xl px-3 py-1.5 text-emerald-950 font-black focus:outline-none shadow-sm text-sm sm:text-base">
+                            <option value="" disabled>-- 選擇狀態/目的 --</option>
+                            <option v-for="opt in currentQ.blank2Options" :key="opt" :value="opt">{{ opt }}</option>
+                        </select>
+                        <span>。</span>
+                    </div>
+
+                    <div class="p-3.5 bg-white rounded-xl border border-emerald-200 text-xs sm:text-sm text-emerald-950">
+                        💡 <strong>你拼出的大白話主幹：</strong>
+                        <span class="font-black text-indigo-700 text-base ml-1">
+                            「{{ currentQ.step3Blank1 || '___' }} {{ currentQ.step3Blank2 || '___' }}。」
+                        </span>
+                    </div>
+                </div>
+
+                <!-- 驗證第三步 -->
+                <div class="space-y-3 pt-1">
+                    <div v-if="currentQ.step3Feedback" 
+                         :class="currentQ.step3IsCorrect ? 'bg-emerald-50 text-emerald-900 border-emerald-300' : 'bg-rose-50 text-rose-900 border-rose-300'" 
+                         class="p-4 rounded-2xl border-2 text-xs sm:text-sm font-bold shadow-sm leading-relaxed">
+                        {{ currentQ.step3Feedback }}
+                    </div>
+                    <button @click="verifyStep3" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-black py-3.5 rounded-2xl shadow-lg transition-all text-sm sm:text-base">
+                        鎖定大白話核心主幹 ➔
+                    </button>
+                </div>
+            </div>
+
+            <!-- ================= STEP 4 & 5: 破陷阱與選項比對 ================= -->
+            <div v-if="wizardStep === 4" class="bg-white p-5 sm:p-6 rounded-3xl border-2 border-purple-200 shadow-sm space-y-5">
+                <div class="flex items-center justify-between border-b pb-3 flex-wrap gap-2">
+                    <div class="flex items-center gap-2">
+                        <span class="w-8 h-8 bg-purple-600 text-white font-black rounded-xl flex items-center justify-center text-sm shadow">4</span>
+                        <h3 class="font-black text-slate-800 text-base sm:text-lg">【第四、五步：破陷阱與比選項】選出正確答案！</h3>
+                    </div>
+                </div>
+
+                <!-- 配角法則專屬提醒 (針對第6題) -->
+                <div v-if="currentQ.sidekickNote" class="bg-amber-50 border-2 border-amber-300 p-4 rounded-2xl text-amber-950 text-xs sm:text-sm font-medium flex items-start gap-2.5 shadow-sm">
+                    <span class="text-2xl shrink-0">⚠️</span>
+                    <div>
+                        <strong class="text-amber-900 font-bold block mb-0.5">【配角法則專屬提醒】：</strong>
+                        {{ currentQ.sidekickNote }}
+                    </div>
+                </div>
+
+                <div class="bg-purple-50 p-4 rounded-2xl border border-purple-200 text-xs sm:text-sm text-purple-950 font-medium">
+                    🎯 <strong>剛才拼出的大白話：</strong>「<span class="font-black text-indigo-700">{{ currentQ.translatedSentence }}</span>」<br>
+                    請對比選項，按『拆解陷阱』可查看各選項的錯誤剖析！
+                </div>
+
+                <!-- 4個選項列表 -->
+                <div class="grid grid-cols-1 gap-3">
+                    <div v-for="(opt, idx) in currentQ.options" :key="idx"
+                         class="border-2 rounded-2xl p-4 transition-all duration-200"
+                         :class="[
+                             currentQ.userSelectedAnswer === opt.label 
+                                 ? (opt.isCorrect ? 'border-emerald-500 bg-emerald-50/70 shadow-md' : 'border-rose-500 bg-rose-50/70 shadow-md') 
+                                 : 'border-slate-200 bg-white hover:border-purple-300'
+                         ]">
+                        <div class="flex items-start justify-between gap-3">
+                            <div class="flex items-start gap-3">
+                                <span class="w-8 h-8 bg-slate-100 text-slate-800 font-black rounded-xl flex items-center justify-center shrink-0 mt-0.5 border border-slate-300">
+                                    {{ opt.label }}
+                                </span>
+                                <div>
+                                    <p class="font-bold text-slate-800 text-sm sm:text-base mb-1">{{ opt.text }}</p>
+                                    <span v-if="opt.showTrap" class="inline-block text-xs font-bold px-2.5 py-0.5 rounded-full shadow-sm"
+                                          :class="opt.isCorrect ? 'bg-emerald-100 text-emerald-800 border border-emerald-300' : 'bg-rose-100 text-rose-800 border border-rose-300'">
+                                        {{ opt.trapBadge }}
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="flex flex-col sm:flex-row gap-2 shrink-0">
+                                <button @click="opt.showTrap = !opt.showTrap" class="text-xs bg-slate-100 hover:bg-slate-200 text-slate-700 px-3 py-1.5 rounded-xl font-bold transition-all border border-slate-300">
+                                    {{ opt.showTrap ? '隱藏分析' : '👀 拆解陷阱' }}
+                                </button>
+                                <button @click="selectFinalAnswer(opt.label)" 
+                                        :class="currentQ.userSelectedAnswer === opt.label ? 'bg-purple-700 text-white font-black' : 'bg-purple-100 text-purple-800 hover:bg-purple-200 font-bold'"
+                                        class="text-xs px-3.5 py-1.5 rounded-xl transition-all shadow-sm">
+                                    {{ currentQ.userSelectedAnswer === opt.label ? '已選擇' : '選擇此項' }}
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- 陷阱細節剖析 -->
+                        <div v-if="opt.showTrap" class="mt-3 pt-3 border-t border-slate-200 text-xs sm:text-sm text-slate-700 leading-relaxed animate-fade-in">
+                            <p class="font-bold text-indigo-900 mb-0.5">🔍 SOP 解陷阱分析：</p>
+                            <p>{{ opt.analysis }}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 作答診斷回饋 -->
+                <div v-if="currentQ.userSelectedAnswer" class="mt-4 p-4 rounded-2xl border-2 text-xs sm:text-sm space-y-2 shadow-sm"
+                     :class="isFinalCorrect ? 'bg-emerald-50 border-emerald-300 text-emerald-950' : 'bg-rose-50 border-rose-300 text-rose-950'">
+                    <div class="flex items-center gap-2 font-black text-base sm:text-lg">
+                        <span v-if="isFinalCorrect">🎉 太棒了！答對囉！</span>
+                        <span v-else>⚠️ 踩到陷阱囉，請再看一眼陷阱分析！</span>
+                    </div>
+                    <p v-if="isFinalCorrect">
+                        你成功運用 SOP 瘦身並匹配到了正確大白話：「<strong>{{ currentQ.translatedSentence }}</strong>」！
+                    </p>
+                    <p v-else class="leading-relaxed">
+                        提示：請對照第三步的大白話主幹，避開「無中生有」、「偷換主角」或「原字照抄字面」的錯誤選項喔！
+                    </p>
+                </div>
+            </div>
+
+            <!-- 下一題 / 完成練習引導按鈕 -->
+            <div class="flex justify-between items-center pt-2">
+                <button v-if="currentQuestionIndex > 0" @click="switchQuestion(currentQuestionIndex - 1)"
+                        class="bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold px-4 py-2.5 rounded-xl text-xs sm:text-sm transition-all">
+                    ⬅️ 上一題
+                </button>
+                <div class="ml-auto flex gap-2">
+                    <button v-if="currentQuestionIndex < questions.length - 1" @click="switchQuestion(currentQuestionIndex + 1)"
+                            class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold px-5 py-2.5 rounded-xl text-xs sm:text-sm shadow transition-all">
+                        下一題 ➡️
+                    </button>
+                    <button v-else @click="stage = 3"
+                            class="bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white font-black px-6 py-2.5 rounded-xl text-xs sm:text-sm shadow-lg transition-all">
+                        🚀 完成所有練習，查看避坑錦囊！ ➔
+                    </button>
+                </div>
+            </div>
+
+        </main>
+
+        <!-- ================= 階段三：避坑錦囊 (STAGE 3) ================= -->
+        <main v-if="stage === 3" class="space-y-6">
+            
+            <!-- 避坑三不選鐵律 -->
+            <div class="bg-gradient-to-r from-purple-800 to-indigo-900 text-white p-6 rounded-3xl shadow-xl space-y-4">
+                <h3 class="text-base sm:text-xl font-black flex items-center gap-2 text-yellow-300">
+                    🛡️ 句義辨析答題防錯「三不選」鐵律
+                </h3>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs sm:text-sm">
+                    <div class="bg-white/10 backdrop-blur-md p-4 rounded-2xl border border-white/20 space-y-1">
+                        <p class="font-black text-yellow-300 text-sm">1. 偷換主角不選 ❌</p>
+                        <p class="text-purple-100 leading-relaxed">原文寫「我食慾大增」，選項寫「讓人食慾大增」，把「我」偷換成「所有人」，絕對是陷阱！</p>
+                    </div>
+                    <div class="bg-white/10 backdrop-blur-md p-4 rounded-2xl border border-white/20 space-y-1">
+                        <p class="font-black text-yellow-300 text-sm">2. 照抄字面不選 ❌</p>
+                        <p class="text-purple-100 leading-relaxed">完全照抄原文後半句（如：「瀑布讓我感到自己渺小」），通常只講了字面，沒講出深層主旨！</p>
+                    </div>
+                    <div class="bg-white/10 backdrop-blur-md p-4 rounded-2xl border border-white/20 space-y-1">
+                        <p class="font-black text-yellow-300 text-sm">3. 無中生有不選 ❌</p>
+                        <p class="text-purple-100 leading-relaxed">原文沒提到的情緒（如：落伍、生氣）或憑空給出的建議（如：改變銷售策略），一律劃掉！</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 配角法則備忘錄 -->
+            <div class="bg-amber-50 border-2 border-amber-300 p-5 rounded-3xl text-amber-950 space-y-2 shadow-sm">
+                <h3 class="font-black text-base sm:text-lg text-amber-900 flex items-center gap-2">
+                    <span>👑 【配角法則】備忘秘笈（借景/借人抒發感受題）</span>
+                </h3>
+                <p class="text-xs sm:text-sm leading-relaxed font-medium">
+                    當句子出現「寫景物/別人」＋「我自己感到渺小/慚愧/震撼」時，請牢記：<br>
+                    <strong class="text-rose-700 font-bold">「寫我渺小，是在誇景壯大；寫我慚愧，是在誇人優秀！」</strong><br>
+                    「我」只是襯托的配角，選項要選讚美「主角（景物/對方）」有多厲害，才是真正的中心意思！
+                </p>
+            </div>
+
+            <!-- 同義轉述詞庫對照表 -->
+            <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm space-y-4">
+                <div>
+                    <h3 class="font-black text-slate-800 text-base sm:text-lg">📖 高頻同義轉述對照庫</h3>
+                    <p class="text-xs text-slate-500 font-medium">正確答案最喜歡把原文書面語轉譯成大白話：</p>
+                </div>
+
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-xs sm:text-sm">
+                        <thead>
+                            <tr class="bg-slate-100 text-slate-700 border-b border-slate-200">
+                                <th class="p-3 rounded-l-xl font-bold">題目原文常見詞（書面語/現象）</th>
+                                <th class="p-3 font-bold">選項轉述詞（大白話）</th>
+                                <th class="p-3 rounded-r-xl font-bold">考題對應實例</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-100">
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-3 font-bold text-indigo-700">陪伴</td>
+                                <td class="p-3 font-bold text-emerald-600">在一起 / 同行</td>
+                                <td class="p-3 text-slate-500 text-xs">好同學陪伴 ↔ 和同學在一起</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-3 font-bold text-indigo-700">食欲大增 / 滿腦子充斥</td>
+                                <td class="p-3 font-bold text-emerald-600">非常喜歡</td>
+                                <td class="p-3 text-slate-500 text-xs">「我」食慾大增 ↔ 「我」喜歡吃自助餐</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-3 font-bold text-indigo-700">留給自己一點時間</td>
+                                <td class="p-3 font-bold text-emerald-600">休息 / 放鬆</td>
+                                <td class="p-3 text-slate-500 text-xs">留時間給自己 ↔ 抽空休息</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-3 font-bold text-indigo-700">首要……其次……</td>
+                                <td class="p-3 font-bold text-emerald-600">要訣 / 關鍵條件</td>
+                                <td class="p-3 text-slate-500 text-xs">首要材料其次技巧 ↔ 烹調佳餚要訣</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-3 font-bold text-indigo-700">收集食物 + 贈送救助</td>
+                                <td class="p-3 font-bold text-emerald-600">功能 / 用途</td>
+                                <td class="p-3 text-slate-500 text-xs">收集贈送 ↔ 食物銀行的功能</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-3 font-bold text-indigo-700">感受到自己的渺小</td>
+                                <td class="p-3 font-bold text-emerald-600">（景物）極其壯觀</td>
+                                <td class="p-3 text-slate-500 text-xs">寫我渺小 ↔ 瀑布非常壯觀</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 返回重新練習 -->
+            <div class="text-center pt-2">
+                <button @click="stage = 2; currentQuestionIndex = 0; wizardStep = 1;" 
+                        class="bg-indigo-600 hover:bg-indigo-700 text-white font-black text-sm sm:text-base px-6 py-3 rounded-2xl shadow-md transition-all">
+                    🔄 重新進行 SOP 闖關練習
+                </button>
+            </div>
+        </main>
+
+        <!-- 頁尾 -->
+        <footer class="mt-12 text-center text-xs text-slate-400 border-t border-slate-200 pt-6">
+            <p>中文科句義辨析解題 SOP 自學錦囊 ｜ 適合直接部署至 GitHub Pages</p>
+        </footer>
+
+    </div>
+
+    <!-- Vue 3 核心數據與邏輯 -->
+    <script>
+        const { createApp } = Vue;
+
+        createApp({
+            data() {
+                return {
+                    stage: 1, // 1: SOP 重溫, 2: 闖關練習, 3: 避坑錦囊
+                    currentQuestionIndex: 0,
+                    wizardStep: 1,
+
+                    // 8 道經典題型數據庫 (包含圖片題目)
+                    questions: [
+                        {
+                            id: 1,
+                            category: '【新舊對比型】',
+                            title: '電子賀卡 vs 傳統賀卡',
+                            rawText: '調查顯示，越來越多市民選擇使用電子賀卡向朋友表達心意，傳統賀卡正逐漸被淘汰。',
+                            questionStem: '上面這句話的主要意思是甚麼？',
+                            step1Hint: '試找出開頭的引言背景『調查顯示，』與使用賀卡的具體細節『向朋友表達心意，』，點擊劃掉它們！',
+                            showStep1HintBox: false,
+                            step1Chunks: [
+                                { text: '調查顯示，', isTargetDelete: true, struck: false },
+                                { text: '越來越多市民', isTargetDelete: false, struck: false },
+                                { text: '選擇使用電子賀卡', isTargetDelete: false, struck: false },
+                                { text: '向朋友表達心意，', isTargetDelete: true, struck: false },
+                                { text: '傳統賀卡', isTargetDelete: false, struck: false },
+                                { text: '正逐漸被淘汰。', isTargetDelete: false, struck: false }
+                            ],
+                            step1Completed: false,
+                            step1Feedback: '',
+                            step1IsCorrect: false,
+
+                            step2Hint: '請點擊圈選這句話進行比較的兩個核心對象（電子賀卡 vs 傳統賀卡）。',
+                            showStep2HintBox: false,
+                            step2Words: [
+                                { text: '越來越多市民', heroType: 0, selected: false },
+                                { text: '選擇使用', heroType: 0, selected: false },
+                                { text: '電子賀卡', heroType: 1, selected: false },
+                                { text: '傳統賀卡', heroType: 2, selected: false },
+                                { text: '正逐漸被淘汰。', heroType: 0, selected: false }
+                            ],
+                            step2Labels: ['主角1 (📈越來越多)', '主角2 (📉逐漸淘汰)'],
+                            step2Completed: false,
+                            step2Feedback: '',
+                            step2IsCorrect: false,
+
+                            blank1Options: ['傳統賀卡', '電子賀卡', '所有賀卡'],
+                            blank2Options: ['不及電子賀卡受歡迎', '價格太過昂貴', '令人感覺落伍'],
+                            correctBlank1: '傳統賀卡',
+                            correctBlank2: '不及電子賀卡受歡迎',
+                            step3Blank1: '',
+                            step3Blank2: '',
+                            translatedSentence: '傳統賀卡不及電子賀卡受歡迎。',
+                            step3Completed: false,
+                            step3Feedback: '',
+                            step3IsCorrect: false,
+
+                            sidekickNote: null,
+                            options: [
+                                { label: 'A', text: '人們很少用賀卡向朋友傳情達意。', isCorrect: false, trapBadge: '⚠️ 偷換概念', showTrap: false, analysis: '原文說「電子賀卡越來越多人用」，人們依然常用賀卡，只是換了電子形式！' },
+                                { label: 'B', text: '使用傳統賀卡令人感覺很落伍。', isCorrect: false, trapBadge: '⚠️ 無中生有', showTrap: false, analysis: '原文只講「逐漸被淘汰」的客觀趨勢，完全沒提到人的心理感受「落伍」。' },
+                                { label: 'C', text: '傳統賀卡不及電子賀卡受歡迎。', isCorrect: true, trapBadge: '✅ 正確同義轉述', showTrap: true, analysis: '正確！大白話換算：電子賀卡多人用 📈 ＋ 傳統賀卡被淘汰 📉 ＝ 傳統賀卡不及電子賀卡受歡迎。' },
+                                { label: 'D', text: '傳統賀卡須改變現時的銷售策略。', isCorrect: false, trapBadge: '⚠️ 過度推論', showTrap: false, analysis: '原文只有客觀事實陳述，沒有提出任何銷售策略建議。' }
+                            ],
+                            userSelectedAnswer: null,
+                            step4Completed: false
+                        },
+                        {
+                            id: 2,
+                            category: '【細節列舉型】',
+                            title: '吃自助餐食慾大增',
+                            rawText: '提到吃自助餐，我滿腦子都充斥着各種美食，鮮嫩的牛扒、鮮甜的海產、濃郁的咖喱、新鮮的水果、美味的甜品……每一種都能夠讓我食欲大增！',
+                            questionStem: '以上句子主要說明：',
+                            step1Hint: '試找出中間一連串具體的食物名稱（牛扒、海產、咖哩、水果...），這些都是例子，請點劃掉它們！',
+                            showStep1HintBox: false,
+                            step1Chunks: [
+                                { text: '提到吃自助餐，', isTargetDelete: false, struck: false },
+                                { text: '我滿腦子都充斥着各種美食，', isTargetDelete: false, struck: false },
+                                { text: '鮮嫩的牛扒、鮮甜的海產、濃郁的咖喱、新鮮的水果、美味的甜品……', isTargetDelete: true, struck: false },
+                                { text: '每一種都能夠讓我食欲大增！', isTargetDelete: false, struck: false }
+                            ],
+                            step1Completed: false,
+                            step1Feedback: '',
+                            step1IsCorrect: false,
+
+                            step2Hint: '請圈出這句話的核心主角「我」與感受「滿腦子充斥/食欲大增」。',
+                            showStep2HintBox: false,
+                            step2Words: [
+                                { text: '提到吃自助餐，', heroType: 0, selected: false },
+                                { text: '我', heroType: 1, selected: false },
+                                { text: '滿腦子充斥各種美食，', heroType: 2, selected: false },
+                                { text: '讓我食欲大增！', heroType: 2, selected: false }
+                            ],
+                            step2Labels: ['核心主角 (「我」)', '個人感受 (食慾大增)'],
+                            step2Completed: false,
+                            step2Feedback: '',
+                            step2IsCorrect: false,
+
+                            blank1Options: ['「我」', '所有人', '自助餐餐廳'],
+                            blank2Options: ['非常喜歡吃自助餐', '非常貪吃無度', '種類極其繁多'],
+                            correctBlank1: '「我」',
+                            correctBlank2: '非常喜歡吃自助餐',
+                            step3Blank1: '',
+                            step3Blank2: '',
+                            translatedSentence: '「我」非常喜歡吃自助餐。',
+                            step3Completed: false,
+                            step3Feedback: '',
+                            step3IsCorrect: false,
+
+                            sidekickNote: null,
+                            options: [
+                                { label: 'A', text: '「我」非常貪吃。', isCorrect: false, trapBadge: '⚠️ 偏離主旨/負面形容', showTrap: false, analysis: '作者只是表達對美味的喜愛，不是在自責「貪吃」。' },
+                                { label: 'B', text: '「我」喜歡吃自助餐。', isCorrect: true, trapBadge: '✅ 正確大白話 (主角為「我」)', showTrap: true, analysis: '正確！「滿腦子都是 ＋ 食慾大增」換成大白話就是「非常喜歡吃」！' },
+                                { label: 'C', text: '自助餐的種類非常多。', isCorrect: false, trapBadge: '⚠️ 細節例子干擾', showTrap: false, analysis: '列舉食物只是細節例子，主要是在強調「我」的食慾與喜愛。' },
+                                { label: 'D', text: '自助餐會讓人食慾大增。', isCorrect: false, trapBadge: '⚠️ 偷換主角（原字照抄陷阱）', showTrap: false, analysis: '危險陷阱！原文是讓「我」食慾大增，D選項偷換成讓「人（所有人）」大增！「我」不代表所有人。' }
+                            ],
+                            userSelectedAnswer: null,
+                            step4Completed: false
+                        },
+                        {
+                            id: 3,
+                            category: '【要訣與關鍵要素型】',
+                            title: '烹調佳餚的要訣 (圖片題 2)',
+                            rawText: '要烹調出美味的菜餚，首要的是選取新鮮的材料，其次是掌握烹調的技巧與烹煮時的火候，菜餚的賣相只是讓食物看上去更吸引罷了。',
+                            questionStem: '上面一句主要說明：',
+                            step1Hint: '句末的「菜餚的賣相只是讓食物看上去更吸引罷了」屬於次要的補充說明（「罷了」表示次要），請點擊劃掉它！',
+                            showStep1HintBox: false,
+                            step1Chunks: [
+                                { text: '要烹調出美味的菜餚，', isTargetDelete: false, struck: false },
+                                { text: '首要的是選取新鮮的材料，', isTargetDelete: false, struck: false },
+                                { text: '其次是掌握烹調的技巧與烹煮時的火候，', isTargetDelete: false, struck: false },
+                                { text: '菜餚的賣相只是讓食物看上去更吸引罷了。', isTargetDelete: true, struck: false }
+                            ],
+                            step1Completed: false,
+                            step1Feedback: '',
+                            step1IsCorrect: false,
+
+                            step2Hint: '請圈出引導關鍵條件的訊號詞「首要」與「其次」。',
+                            showStep2HintBox: false,
+                            step2Words: [
+                                { text: '要烹調出美味菜餚，', heroType: 0, selected: false },
+                                { text: '首要', heroType: 1, selected: false },
+                                { text: '的是選新鮮材料，', heroType: 0, selected: false },
+                                { text: '其次', heroType: 2, selected: false },
+                                { text: '是掌握技巧與火候。', heroType: 0, selected: false }
+                            ],
+                            step2Labels: ['第一關鍵 (首要)', '第二關鍵 (其次)'],
+                            step2Completed: false,
+                            step2Feedback: '',
+                            step2IsCorrect: false,
+
+                            blank1Options: ['烹調佳餚的', '烹調食物的', '菜餚的賣相'],
+                            blank2Options: ['要訣與關鍵條件', '基本方法', '最重要單一元素'],
+                            correctBlank1: '烹調佳餚的',
+                            correctBlank2: '要訣與關鍵條件',
+                            step3Blank1: '',
+                            step3Blank2: '',
+                            translatedSentence: '烹調佳餚的要訣。',
+                            step3Completed: false,
+                            step3Feedback: '',
+                            step3IsCorrect: false,
+
+                            sidekickNote: null,
+                            options: [
+                                { label: 'A', text: '烹調食物的方法。', isCorrect: false, trapBadge: '⚠️ 範圍太過寬泛', showTrap: false, analysis: '原文特別用「首要...其次...」強調做菜的核心條件，用「要訣」比泛稱「方法」更精準！' },
+                                { label: 'B', text: '烹調佳餚的要訣。', isCorrect: true, trapBadge: '✅ 正確同義轉述', showTrap: true, analysis: '正確！大白話換算：「首要（材料）＋ 其次（技巧與火候）」＝ 烹調佳餚的「要訣/關鍵條件」！' },
+                                { label: 'C', text: '烹調食物最重要的元素。', isCorrect: false, trapBadge: '⚠️ 以偏概全', analysis: '這只講了「首要的新鮮材料」，忽略了「其次的技巧與火候」，欠缺全面性。' },
+                                { label: 'D', text: '菜餚的賣相令食物更美味。', isCorrect: false, trapBadge: '⚠️ 次要資訊干擾 / 曲解原意', analysis: '「賣相」只是次要補充（「罷了」），而且賣相只是讓食物看上去吸引，不能讓食物變美味。' }
+                            ],
+                            userSelectedAnswer: null,
+                            step4Completed: false
+                        },
+                        {
+                            id: 4,
+                            category: '【人物貢獻型】',
+                            title: '高錕與光纖技術 (圖片題 7)',
+                            rawText: '香港著名科學家高錕——光纖通訊之父，他發明的光纖技術，不但縮短了人與人之間的距離，而且將高端科技推進了一大步。',
+                            questionStem: '上一句主要說明：',
+                            step1Hint: '破折號後面的頭銜「——光纖通訊之父，」是同位語補充說明，請點擊劃掉這段補充頭銜！',
+                            showStep1HintBox: false,
+                            step1Chunks: [
+                                { text: '香港著名科學家高錕', isTargetDelete: false, struck: false },
+                                { text: '——光纖通訊之父，', isTargetDelete: true, struck: false },
+                                { text: '他發明的光纖技術，', isTargetDelete: false, struck: false },
+                                { text: '不但縮短了人與人之間的距離，而且將高端科技推進了一大步。', isTargetDelete: false, struck: false }
+                            ],
+                            step1Completed: false,
+                            step1Feedback: '',
+                            step1IsCorrect: false,
+
+                            step2Hint: '請圈出人物主角「高錕」與其帶來的重大影響「縮短距離、推進高端科技」。',
+                            showStep2HintBox: false,
+                            step2Words: [
+                                { text: '高錕', heroType: 1, selected: false },
+                                { text: '發明的光纖技術，', heroType: 0, selected: false },
+                                { text: '縮短人際距離、推進高端科技', heroType: 2, selected: false }
+                            ],
+                            step2Labels: ['人物主角 (高錕)', '重大影響/貢獻'],
+                            step2Completed: false,
+                            step2Feedback: '',
+                            step2IsCorrect: false,
+
+                            blank1Options: ['高錕對社會與科技的', '發明光纖的', '人與人之間的'],
+                            blank2Options: ['巨大貢獻', '基礎過程', '距離拉近'],
+                            correctBlank1: '高錕對社會與科技的',
+                            correctBlank2: '巨大貢獻',
+                            step3Blank1: '',
+                            step3Blank2: '',
+                            translatedSentence: '高錕對社會的巨大貢獻。',
+                            step3Completed: false,
+                            step3Feedback: '',
+                            step3IsCorrect: false,
+
+                            sidekickNote: null,
+                            options: [
+                                { label: 'A', text: '光纖是高錕所發明的。', isCorrect: false, trapBadge: '⚠️ 僅提次要事實', analysis: '這只是基礎的事實陳述，沒有講出發明光纖對社會帶來的深遠巨大貢獻！' },
+                                { label: 'B', text: '高錕對社會的巨大貢獻。', isCorrect: true, trapBadge: '✅ 正確同義轉述', showTrap: true, analysis: '正確！「縮短距離 ＋ 推進高端科技」在大白話中概括為「對社會的巨大貢獻」！' },
+                                { label: 'C', text: '因為高錕，所以科技發達了。', isCorrect: false, trapBadge: '⚠️ 誇大因果', analysis: '表述過於過度簡化且誇大因果。' },
+                                { label: 'D', text: '因為發明了光纖，所以人與人之間的距離拉近了。', isCorrect: false, trapBadge: '⚠️ 以偏概全', analysis: '這只講到了「縮短距離」，漏掉了後半句「將高端科技推進了一大步」。' }
+                            ],
+                            userSelectedAnswer: null,
+                            step4Completed: false
+                        },
+                        {
+                            id: 5,
+                            category: '【轉折與目的型】',
+                            title: '媽媽勸哥哥留時間',
+                            rawText: '媽媽對哥哥說：「哥哥，你經常留校訓練，準備比賽，即使在假日也要回校訓練，你平常連多睡半小時都很難得。我知道你對比賽抱有很大的期望，專注於訓練，同時也承受著很大的壓力。但是哥哥，你能留給自己一點時間嗎？哪怕只是每天早半小時完成訓練也可以了！」',
+                            questionStem: '媽媽說這些話的目的是：',
+                            step1Hint: '前面的訓練背景、期待與壓力都是鋪墊！請把前面和最後的訓練細節劃掉，留下轉折句『但是...你能留給自己一點時間嗎？』',
+                            showStep1HintBox: false,
+                            step1Chunks: [
+                                { text: '哥哥，你經常留校訓練，準備比賽，假日回校……', isTargetDelete: true, struck: false },
+                                { text: '我知道你對比賽抱有期望，承受很大壓力。', isTargetDelete: true, struck: false },
+                                { text: '但是哥哥，你能留給自己一點時間嗎？', isTargetDelete: false, struck: false },
+                                { text: '哪怕只是每天早半小時完成訓練也可以了！', isTargetDelete: true, struck: false }
+                            ],
+                            step1Completed: false,
+                            step1Feedback: '',
+                            step1IsCorrect: false,
+
+                            step2Hint: '請圈出轉折訊號詞『但是』與媽媽的核心訴求『你能留給自己一點時間嗎』。',
+                            showStep2HintBox: false,
+                            step2Words: [
+                                { text: '但是', heroType: 1, selected: false },
+                                { text: '哥哥，', heroType: 0, selected: false },
+                                { text: '你能留給自己一點時間嗎？', heroType: 2, selected: false }
+                            ],
+                            step2Labels: ['轉折訊號 (重點在後)', '核心訴求 (說話目的)'],
+                            step2Completed: false,
+                            step2Feedback: '',
+                            step2IsCorrect: false,
+
+                            blank1Options: ['希望哥哥能夠', '要求哥哥立刻', '向哥哥抱怨'],
+                            blank2Options: ['稍微抽點時間給自己休息', '完全放棄體育訓練', '發牢騷表達不滿'],
+                            correctBlank1: '希望哥哥能夠',
+                            correctBlank2: '稍微抽點時間給自己休息',
+                            step3Blank1: '',
+                            step3Blank2: '',
+                            translatedSentence: '希望哥哥能夠稍微抽點時間給自己休息。',
+                            step3Completed: false,
+                            step3Feedback: '',
+                            step3IsCorrect: false,
+
+                            sidekickNote: null,
+                            options: [
+                                { label: 'A', text: '向哥哥發牢騷。', isCorrect: false, trapBadge: '⚠️ 曲解態度', showTrap: false, analysis: '媽媽是關心哥哥太累，並非發牢騷。' },
+                                { label: 'B', text: '要求哥哥放棄訓練。', isCorrect: false, trapBadge: '⚠️ 過度極端推論', showTrap: false, analysis: '原文只說「早半小時完成」，並非要求完全放棄訓練。' },
+                                { label: 'C', text: '希望哥哥知道媽媽很關心他。', isCorrect: false, trapBadge: '⚠️ 感情背景非主要目的', showTrap: false, analysis: '關心是背景情感，說話的直接動機是勸他「抽空休息」。' },
+                                { label: 'D', text: '希望哥哥能夠稍微抽點時間給自己休息。', isCorrect: true, trapBadge: '✅ 正確大白話轉譯', showTrap: true, analysis: '正確！大白話對接：「留時間給自己 ↔ 抽空休息」。' }
+                            ],
+                            userSelectedAnswer: null,
+                            step4Completed: false
+                        },
+                        {
+                            id: 4,
+                            category: '【因果總括型】',
+                            title: '操場嬉戲與同學陪伴',
+                            rawText: '我愛在教室裏聽課，也愛在操場上嬉戲；愛在學校運動會上吶喊助威，也愛在學校旅行時欣賞風景——因為我有很多好同學陪伴。',
+                            questionStem: '上面一句主要寫作者：',
+                            step1Hint: '聽課、嬉戲、運動會吶喊、旅行看風景都是具體活動例子！請點劃掉前面四個舉例，保留破折號後的『因為...好同學陪伴』！',
+                            showStep1HintBox: false,
+                            step1Chunks: [
+                                { text: '我愛在教室裏聽課，', isTargetDelete: true, struck: false },
+                                { text: '也愛在操場上嬉戲；', isTargetDelete: true, struck: false },
+                                { text: '愛在學校運動會上吶喊助威，', isTargetDelete: true, struck: false },
+                                { text: '也愛在學校旅行時欣賞風景', isTargetDelete: true, struck: false },
+                                { text: '——因為我有很多好同學陪伴。', isTargetDelete: false, struck: false }
+                            ],
+                            step1Completed: false,
+                            step1Feedback: '',
+                            step1IsCorrect: false,
+
+                            step2Hint: '請圈出因果訊號詞『因為』與根本原因『好同學陪伴』。',
+                            showStep2HintBox: false,
+                            step2Words: [
+                                { text: '因為', heroType: 1, selected: false },
+                                { text: '我有很多', heroType: 0, selected: false },
+                                { text: '好同學陪伴。', heroType: 2, selected: false }
+                            ],
+                            step2Labels: ['因果訊號詞', '根本原因 (靈魂重點)'],
+                            step2Completed: false,
+                            step2Feedback: '',
+                            step2IsCorrect: false,
+
+                            blank1Options: ['最愛', '最討厭', '最懷念'],
+                            blank2Options: ['和好同學在一起', '在校內參加活動', '在校外欣賞風景'],
+                            correctBlank1: '最愛',
+                            correctBlank2: '和好同學在一起',
+                            step3Blank1: '',
+                            step3Blank2: '',
+                            translatedSentence: '最愛和好同學在一起。',
+                            step3Completed: false,
+                            step3Feedback: '',
+                            step3IsCorrect: false,
+
+                            sidekickNote: null,
+                            options: [
+                                { label: 'A', text: '最愛在學校內的活動。', isCorrect: false, trapBadge: '⚠️ 斷章取義', showTrap: false, analysis: '這只講了聽課和嬉戲，忽略了後面的運動會、旅行和核心原因。' },
+                                { label: 'B', text: '最愛在學校外的活動。', isCorrect: false, trapBadge: '⚠️ 斷章取義', showTrap: false, analysis: '這只講了旅行欣賞風景。' },
+                                { label: 'C', text: '最愛和好同學在一起。', isCorrect: true, trapBadge: '✅ 正確同義轉述', showTrap: true, analysis: '正確！前面活動只是背景，根本原因是「陪伴」，大白話換算：「陪伴 ↔ 在一起」。' },
+                                { label: 'D', text: '最愛學生時代的回憶。', isCorrect: false, trapBadge: '⚠️ 無中生有', showTrap: false, analysis: '原文用現在式表達喜愛，並未寫到「懷念過去回憶」。' }
+                            ],
+                            userSelectedAnswer: null,
+                            step4Completed: false
+                        },
+                        {
+                            id: 5,
+                            category: '【機構功能型】',
+                            title: '食物銀行的功能',
+                            rawText: '食物銀行屬於非牟利機構，主要收集由飲食界夥伴捐贈的食物，如蔬菜、罐頭冷凍食品等，然後贈送給有需要的人士，為他們雪中送炭。',
+                            questionStem: '上面一句主要說明食物銀行的：',
+                            step1Hint: '請點劃掉具體的食物名稱舉例『如蔬菜、罐頭冷凍食品等，』！',
+                            showStep1HintBox: false,
+                            step1Chunks: [
+                                { text: '食物銀行屬於非牟利機構，', isTargetDelete: false, struck: false },
+                                { text: '主要收集由飲食界夥伴捐贈的食物，', isTargetDelete: false, struck: false },
+                                { text: '如蔬菜、罐頭冷凍食品等，', isTargetDelete: true, struck: false },
+                                { text: '然後贈送給有需要的人士，為他們雪中送炭。', isTargetDelete: false, struck: false }
+                            ],
+                            step1Completed: false,
+                            step1Feedback: '',
+                            step1IsCorrect: false,
+
+                            step2Hint: '請圈出機構主角『食物銀行』與其核心運作『收集並贈送食物』。',
+                            showStep2HintBox: false,
+                            step2Words: [
+                                { text: '食物銀行', heroType: 1, selected: false },
+                                { text: '非牟利機構，', heroType: 0, selected: false },
+                                { text: '收集食物並贈送給有需要人士', heroType: 2, selected: false }
+                            ],
+                            step2Labels: ['機構主角', '核心運作/作用'],
+                            step2Completed: false,
+                            step2Feedback: '',
+                            step2IsCorrect: false,
+
+                            blank1Options: ['這句話主要說明', '這句話主要介紹', '這句話主要宣傳'],
+                            blank2Options: ['食物銀行的功能與用途', '食物銀行的商業性質', '食物銀行的輝煌成就'],
+                            correctBlank1: '這句話主要說明',
+                            correctBlank2: '食物銀行的功能與用途',
+                            step3Blank1: '',
+                            step3Blank2: '',
+                            translatedSentence: '這句話主要說明食物銀行的功能。',
+                            step3Completed: false,
+                            step3Feedback: '',
+                            step3IsCorrect: false,
+
+                            sidekickNote: null,
+                            options: [
+                                { label: 'A', text: '性質。', isCorrect: false, trapBadge: '⚠️ 偏離主題', showTrap: false, analysis: '「非牟利」只是前置修飾，全文核心在說明它「做什麼服務（功能）」。' },
+                                { label: 'B', text: '運作。', isCorrect: false, trapBadge: '⚠️ 概念偏差', showTrap: false, analysis: '「運作」側重內部行政流程細節，而此處主要說明其社會「功能與作用」。' },
+                                { label: 'C', text: '功能。', isCorrect: true, trapBadge: '✅ 正確概括', showTrap: true, analysis: '正確！收集食物並贈送救助有需要的人，正是食物銀行的「功能/作用」。' },
+                                { label: 'D', text: '成就。', isCorrect: false, trapBadge: '⚠️ 無中生有', showTrap: false, analysis: '文中並未提及歷史得獎或輝煌成就。' }
+                            ],
+                            userSelectedAnswer: null,
+                            step4Completed: false
+                        },
+                        {
+                            id: 6,
+                            category: '【側面烘托/配角法則型】',
+                            title: '尼加拉瓜大瀑布',
+                            rawText: '在我面前的是何等壯麗的尼加拉瓜大瀑布，站在它的背後，我不禁感受到自己的渺小。',
+                            questionStem: '上面一句的主要意思是：',
+                            step1Hint: '『站在它的背後』是站位細節，請點擊劃掉！注意保留大景物『壯麗的大瀑布』與感受『自己渺小』。',
+                            showStep1HintBox: false,
+                            step1Chunks: [
+                                { text: '在我面前的是何等壯麗的尼加拉瓜大瀑布，', isTargetDelete: false, struck: false },
+                                { text: '站在它的背後，', isTargetDelete: true, struck: false },
+                                { text: '我不禁感受到自己的渺小。', isTargetDelete: false, struck: false }
+                            ],
+                            step1Completed: false,
+                            step1Feedback: '',
+                            step1IsCorrect: false,
+
+                            step2Hint: '請圈出真正的描寫主角『尼加拉瓜大瀑布』與感受『感受到自己的渺小』。',
+                            showStep2HintBox: false,
+                            step2Words: [
+                                { text: '尼加拉瓜大瀑布', heroType: 1, selected: false },
+                                { text: '何等壯麗，', heroType: 1, selected: false },
+                                { text: '感受到自己的渺小。', heroType: 2, selected: false }
+                            ],
+                            step2Labels: ['真正的描寫主角', '配角(我)的對比感受'],
+                            step2Completed: false,
+                            step2Feedback: '',
+                            step2IsCorrect: false,
+
+                            blank1Options: ['尼加拉瓜大瀑布', '「我」個人', '所有人'],
+                            blank2Options: ['非常壯觀宏偉', '非常渺小微不足道', '令人感覺很可怕'],
+                            correctBlank1: '尼加拉瓜大瀑布',
+                            correctBlank2: '非常壯觀宏偉',
+                            step3Blank1: '',
+                            step3Blank2: '',
+                            translatedSentence: '尼加拉瓜大瀑布非常壯觀。（以小襯大）',
+                            step3Completed: false,
+                            step3Feedback: '',
+                            step3IsCorrect: false,
+
+                            sidekickNote: '【配角法則】：句子出現「自己感到渺小/慚愧」，「我」只是配角！作者寫「我渺小」，真正目的是為了讚美主角（瀑布）極其壯觀！',
+                            options: [
+                                { label: 'A', text: '「我」很渺小。', isCorrect: false, trapBadge: '⚠️ 錯把配角當主角', showTrap: false, analysis: '錯！作者不是在寫自我介紹，「我」只是襯托瀑布壯觀的配角！' },
+                                { label: 'B', text: '尼加拉瓜大瀑布很壯觀。', isCorrect: true, trapBadge: '✅ 正確深層主旨 (配角法則)', showTrap: true, analysis: '正確！大白話：「寫我渺小，是在誇景物壯大！」側面烘托出瀑布非常壯觀。' },
+                                { label: 'C', text: '「我」很喜歡尼加拉瓜大瀑布。', isCorrect: false, trapBadge: '⚠️ 無中生有', showTrap: false, analysis: '原文只強調「壯麗」與震撼感受，未提及感情上的「喜歡」。' },
+                                { label: 'D', text: '尼加拉瓜大瀑布讓我感到自己渺小。', isCorrect: false, trapBadge: '⚠️ 原字照抄字面陷阱', showTrap: false, analysis: '這只是把後半句字面重述一遍，未說出這句話讚美瀑布壯觀的真正深層主旨。' }
+                            ],
+                            userSelectedAnswer: null,
+                            step4Completed: false
+                        }
+                    ]
+                }
+            },
+            computed: {
+                currentQ() {
+                    return this.questions[this.currentQuestionIndex];
+                },
+                step1SlimSentence() {
+                    return this.currentQ.step1Chunks.filter(c => !c.struck).map(c => c.text).join('');
+                },
+                isFinalCorrect() {
+                    const correctOpt = this.currentQ.options.find(o => o.isCorrect);
+                    return this.currentQ.userSelectedAnswer === correctOpt.label;
+                }
+            },
+            methods: {
+                switchQuestion(index) {
+                    this.currentQuestionIndex = index;
+                    this.wizardStep = 1;
+                },
+                toggleStep1Chunk(idx) {
+                    this.currentQ.step1Chunks[idx].struck = !this.currentQ.step1Chunks[idx].struck;
+                },
+                verifyStep1() {
+                    const struckTargets = this.currentQ.step1Chunks.filter(c => c.isTargetDelete && c.struck).length;
+                    const totalTargets = this.currentQ.step1Chunks.filter(c => c.isTargetDelete).length;
+                    const struckNonTargets = this.currentQ.step1Chunks.filter(c => !c.isTargetDelete && c.struck).length;
+
+                    if (struckNonTargets > 0) {
+                        this.currentQ.step1IsCorrect = false;
+                        this.currentQ.step1Feedback = '⚠️ 哎呀！你把句子的核心主角或重點劃掉囉！被劃掉的字會變灰加劃線，請再點一下它把它復原喔！';
+                    } else if (struckTargets < totalTargets) {
+                        this.currentQ.step1IsCorrect = false;
+                        this.currentQ.step1Feedback = '⚠️ 還有一些不重要的補充細節或例子還沒劃掉喔！再仔細找找看，或按【💡 點我拿提示】幫忙！';
+                    } else {
+                        this.currentQ.step1IsCorrect = true;
+                        this.currentQ.step1Completed = true;
+                        this.currentQ.step1Feedback = '🎉 太棒了！完美劃掉所有干擾細節！成功瘦身，自動解鎖 Step 2！';
+                        setTimeout(() => { this.wizardStep = 2; }, 1200);
+                    }
+                },
+                toggleStep2Word(idx) {
+                    this.currentQ.step2Words[idx].selected = !this.currentQ.step2Words[idx].selected;
+                },
+                verifyStep2() {
+                    const hero1Selected = this.currentQ.step2Words.filter(w => w.heroType === 1 && w.selected).length;
+                    const hero1Total = this.currentQ.step2Words.filter(w => w.heroType === 1).length;
+                    const hero2Selected = this.currentQ.step2Words.filter(w => w.heroType === 2 && w.selected).length;
+                    const hero2Total = this.currentQ.step2Words.filter(w => w.heroType === 2).length;
+                    const wrongSelected = this.currentQ.step2Words.filter(w => w.heroType === 0 && w.selected).length;
+
+                    if (hero1Selected === hero1Total && hero2Selected === hero2Total && wrongSelected === 0) {
+                        this.currentQ.step2IsCorrect = true;
+                        this.currentQ.step2Completed = true;
+                        this.currentQ.step2Feedback = '🎉 賓果！成功圈出關鍵主角與訊號詞！解鎖 Step 3！';
+                        setTimeout(() => { this.wizardStep = 3; }, 1200);
+                    } else {
+                        this.currentQ.step2IsCorrect = false;
+                        this.currentQ.step2Feedback = '💡 提示：請剛好圈選黃色與橘色標記對應的核心詞彙喔！';
+                    }
+                },
+                verifyStep3() {
+                    if (this.currentQ.step3Blank1 === this.currentQ.correctBlank1 && 
+                        this.currentQ.step3Blank2 === this.currentQ.correctBlank2) {
+                        this.currentQ.step3IsCorrect = true;
+                        this.currentQ.step3Completed = true;
+                        this.currentQ.step3Feedback = `🎉 太優秀了！成功拼出大白話：「${this.currentQ.translatedSentence}」！解鎖 Step 4/5！`;
+                        setTimeout(() => { this.wizardStep = 4; }, 1200);
+                    } else {
+                        this.currentQ.step3IsCorrect = false;
+                        this.currentQ.step3Feedback = '💡 再想想看：請選擇符合前面圈出主角與訊號的大白話組合！';
+                    }
+                },
+                selectFinalAnswer(label) {
+                    this.currentQ.userSelectedAnswer = label;
+                    if (label === this.currentQ.options.find(o => o.isCorrect).label) {
+                        this.currentQ.step4Completed = true;
+                    }
+                }
+            }
+        }).mount('#app');
+    </script>
+</body>
+</html>
